@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4462000230734946812}
   - component: {fileID: 4342555378341100504}
   m_Layer: 0
-  m_Name: Outfit
+  m_Name: PlayerCustomization
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
