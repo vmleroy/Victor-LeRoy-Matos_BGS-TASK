@@ -21,7 +21,7 @@ public class PlayerSpriteControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             Debug.Log("Changing to PlayerAnimation");
-            ChangeOutfitLibrary(Resources.Load<SpriteLibraryAsset>("Player/Sprites/PlayerAnimation"));
+            ChangeOutfitLibrary(Resources.Load<SpriteLibraryAsset>("Player/Sprites/Outfit/BikiniOutfit"));
         }
     }
 
