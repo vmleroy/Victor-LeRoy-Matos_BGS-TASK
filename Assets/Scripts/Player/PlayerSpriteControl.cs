@@ -18,11 +18,11 @@ public class PlayerSpriteControl : MonoBehaviour
     void Update()
     {
         // WIP: CODE SIMILAR TO THIS TO BE IMPLEMENTED AT STORE
-        // if (Input.GetKeyDown(KeyCode.LeftAlt))
-        // {
-        //     Debug.Log("Changing to PlayerAnimation");
-        //     ChangeOutfitLibrary(Resources.Load<SpriteLibraryAsset>("Player/Sprites/PlayerAnimation"));
-        // }
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            Debug.Log("Changing to PlayerAnimation");
+            ChangeOutfitLibrary(Resources.Load<SpriteLibraryAsset>("Player/Sprites/PlayerAnimation"));
+        }
     }
 
     public void ChangeOutfitLibrary (SpriteLibraryAsset index) {
