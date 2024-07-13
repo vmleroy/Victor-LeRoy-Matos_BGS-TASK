@@ -9,7 +9,6 @@ public class Shopkeeper : MonoBehaviour
 
     private GameObject _questionMarkBaloon;
     [SerializeField] private GameObject _shopUI;
-    private GameObject _shopUIInstance;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +26,7 @@ public class Shopkeeper : MonoBehaviour
     }
 
     void OpenShopUI() {
-        if (_shopUIInstance && _shopUIInstance.activeSelf) return;
-        _shopUIInstance = Instantiate(_shopUI, Vector3.zero, Quaternion.identity);
+        Instantiate(_shopUI, Vector3.zero, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

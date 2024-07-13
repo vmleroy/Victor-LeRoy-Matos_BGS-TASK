@@ -22,7 +22,7 @@ public class SellItems : MonoBehaviour
         foreach (Item item in _playerInventory.items)
         {
             GameObject sellItem = Instantiate(_sellItemObject, transform.Find("Viewport").transform.Find("Content").transform);
-            sellItem.transform.localScale = new Vector3(0.06f, 0.06f, 1);
+            sellItem.transform.localScale = new Vector3(0.06f, 0.05f, 1);
             Item shopItem = item.Clone();        
             shopItem.itemValue = item.itemValue / 2;           
             sellItem.GetComponent<ShopSellItem>().item = shopItem;

@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.092955515, g: 0.026477398, b: 0.3301887, a: 0.74509805}
+  m_Color: {r: 0.092955515, g: 0.026477398, b: 0.3301887, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7469651599393877212}
-  - component: {fileID: 6353994031319610406}
+  - component: {fileID: 4602241625695277443}
   m_Layer: 0
   m_Name: ShopUI
   m_TagString: Untagged
@@ -417,7 +417,7 @@ Transform:
   - {fileID: 5561423372718278642}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6353994031319610406
+--- !u!114 &4602241625695277443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -429,8 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dba657fd6d719e4181de0ce8cd86929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shopUI: {fileID: 5739748057720129723}
+  _UI: {fileID: 5739748057720129723}
   _closeButton: {fileID: 2671414195684040567}
+  _PlayerPreviewScene: {fileID: 0}
 --- !u!1 &7878253875159989546
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +857,18 @@ PrefabInstance:
     - target: {fileID: 6581731641929962828, guid: 1a76cfc01dbb809468be24070c5e7e5e, type: 3}
       propertyPath: m_SizeDelta.y
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581731641929962828, guid: 1a76cfc01dbb809468be24070c5e7e5e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.3049436
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581731641929962828, guid: 1a76cfc01dbb809468be24070c5e7e5e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.8091853
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581731641929962828, guid: 1a76cfc01dbb809468be24070c5e7e5e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.98131406
       objectReference: {fileID: 0}
     - target: {fileID: 6581731641929962828, guid: 1a76cfc01dbb809468be24070c5e7e5e, type: 3}
       propertyPath: m_LocalPosition.x

@@ -25,15 +25,14 @@ public class BuyItems : MonoBehaviour
 
         for (int i = 0; i < itemsObject.Length; i++)
         {
-            Item item = itemsObject[i].GetComponent<Item>().Clone();
+            Item item = itemsObject[i].GetComponent<Item>();
             if (item && (item.itemType == _itemType || _itemType == "All"))
             {
                 GameObject buyItem = Instantiate(_buyItemObject, transform.Find("Viewport").transform.Find("Content").transform);
-                buyItem.transform.localScale = new Vector3(0.06f, 0.06f, 1);
+                buyItem.transform.localScale = new Vector3(0.06f, 0.05f, 1);
                 buyItem.GetComponent<ShopBuyItem>().item = item;
                 spawnObjectY -= 50;
             }
-            Destroy(item);
         }
     }
 }
