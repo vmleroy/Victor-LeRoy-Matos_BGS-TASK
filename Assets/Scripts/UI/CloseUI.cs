@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 
 public class CloseUI : MonoBehaviour
 {
@@ -12,7 +9,6 @@ public class CloseUI : MonoBehaviour
     [SerializeField] private GameObject _UI;
     [SerializeField] private Button _closeButton;
     private PlayerInput _playerInput;
-    [SerializeField] private SceneAsset _PlayerPreviewScene;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +30,8 @@ public class CloseUI : MonoBehaviour
 
     void CloseUIFunc() {
         _playerInput.isDisabled = false;
-        if (_PlayerPreviewScene) {
-            SceneManager.UnloadSceneAsync(_PlayerPreviewScene.name);
+        if (SceneManager.GetSceneByName("PreviewPlayer").isLoaded) {
+            SceneManager.UnloadSceneAsync("PreviewPlayer");
         }
         Destroy(_UI);
     }

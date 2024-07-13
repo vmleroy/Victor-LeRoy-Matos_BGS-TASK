@@ -1,6 +1,6 @@
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 
 public class InventoryItems : MonoBehaviour
@@ -8,7 +8,6 @@ public class InventoryItems : MonoBehaviour
     
     private PlayerInventory _playerInventory;
     [SerializeField] private GameObject _InventoryItemObject;
-    [SerializeField] private SceneAsset _PlayerPreviewScene;
 
     void Start()
     {
@@ -35,23 +34,21 @@ public class InventoryItems : MonoBehaviour
     }
 
     public void UpdatePreviewEquipment() {
-        if (_PlayerPreviewScene)
+        if (SceneManager.GetSceneByName("PreviewPlayer").isLoaded)
         {
-            Debug.Log("Player Preview Scene is assigned in the inspector");
-            if (!_PlayerPreviewScene.IsDestroyed())
+            PlayerInventory[] players = FindObjectsOfType<PlayerInventory>();
+            foreach (PlayerInventory player in players)
             {
-                PlayerInventory[] players = FindObjectsOfType<PlayerInventory>();
-                foreach (PlayerInventory player in players)
+                if (player.gameObject.scene.name == "PreviewPlayer")
                 {
-                    if (player.gameObject.scene.name == _PlayerPreviewScene.name)
+                    SpriteLibrary[] playerChildsSL = _playerInventory.gameObject.GetComponentsInChildren<SpriteLibrary>();
+                    SpriteLibrary[] previewChildsSL = player.gameObject.GetComponentsInChildren<SpriteLibrary>();
+                    for (int i = 0; i < previewChildsSL.Length; i++)
                     {
-                        SpriteLibrary[] previewChildsSL = _playerInventory.gameObject.GetComponentsInChildren<SpriteLibrary>();
-                        SpriteLibrary[] playerChildsSL = player.gameObject.GetComponentsInChildren<SpriteLibrary>();
-                        for (int i = 0; i < previewChildsSL.Length; i++)
-                        {
-                            playerChildsSL[i].spriteLibraryAsset = previewChildsSL[i].spriteLibraryAsset;
-                        }                        
-                    }
+                        previewChildsSL[i].spriteLibraryAsset = playerChildsSL[i].spriteLibraryAsset;
+                        previewChildsSL[i].gameObject.GetComponent<SpriteResolver>().SetCategoryAndLabel(playerChildsSL[i].gameObject.GetComponent<SpriteResolver>().GetCategory(), playerChildsSL[i].gameObject.GetComponent<SpriteResolver>().GetLabel());
+                        previewChildsSL[i].gameObject.GetComponent<SpriteRenderer>().sprite = playerChildsSL[i].gameObject.GetComponent<SpriteRenderer>().sprite;
+                    }                        
                 }
             }
         }

@@ -41,6 +41,19 @@ public class ShopSellItem : MonoBehaviour
     {
         if (_playerEconomy.Sell(item.itemValue))
         {
+            if (_playerInventory.EquipedItem(item)) {
+                switch (item.itemType) {
+                    case "Outfit":
+                        _playerInventory.EquipItem(Resources.Load<Item>("Items/BoxerOutfit")); 
+                        break;
+                    case "Hat":
+                        _playerInventory.EquipItem(Resources.Load<Item>("Items/NoHat")); 
+                        break;
+                    case "Hair":                          
+                        _playerInventory.EquipItem(Resources.Load<Item>("Items/NoHair")); 
+                        break;
+                }
+            }
             _playerInventory.RemoveItem(item);
             Destroy(gameObject);
         }

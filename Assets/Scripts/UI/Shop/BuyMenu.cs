@@ -28,6 +28,10 @@ public class BuyItems : MonoBehaviour
             Item item = itemsObject[i].GetComponent<Item>();
             if (item && (item.itemType == _itemType || _itemType == "All"))
             {
+                if (item.itemName == "BoxerOutfit" || item.itemName == "NoHat" || item.itemName == "NoHair")
+                {
+                    continue;
+                }
                 GameObject buyItem = Instantiate(_buyItemObject, transform.Find("Viewport").transform.Find("Content").transform);
                 buyItem.transform.localScale = new Vector3(0.06f, 0.05f, 1);
                 buyItem.GetComponent<ShopBuyItem>().item = item;

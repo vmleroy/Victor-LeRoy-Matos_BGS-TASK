@@ -79,6 +79,13 @@ public class PlayerInventory : MonoBehaviour
                     string parentName = sl.gameObject.transform.name;
                     if (parentName == "Hair")
                     {
+                        if (item.itemName == "NoHair")
+                        {
+                            sl.spriteLibraryAsset = null;
+                            sl.gameObject.GetComponent<SpriteResolver>().SetCategoryAndLabel("No Category", "No Label");
+                            sl.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+                            break;
+                        }
                         sl.spriteLibraryAsset = item.spriteLibrary;
                     }
                 }
@@ -90,6 +97,13 @@ public class PlayerInventory : MonoBehaviour
                     string parentName = sl.gameObject.transform.name;
                     if (parentName == "Hat")
                     {
+                        if (item.itemName == "NoHat")
+                        {
+                            sl.spriteLibraryAsset = null;
+                            sl.gameObject.GetComponent<SpriteResolver>().SetCategoryAndLabel("No Category", "No Label");
+                            sl.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+                            break;
+                        }
                         sl.spriteLibraryAsset = item.spriteLibrary;
                     }
                 }
@@ -98,5 +112,18 @@ public class PlayerInventory : MonoBehaviour
                 Debug.LogError("Item type not found");
                 break;
         }
+    }
+
+    public bool EquipedItem(Item item)
+    {
+        SpriteLibrary[] playerChildrenSL = _player.GetComponentsInChildren<SpriteLibrary>();
+        foreach (SpriteLibrary sl in playerChildrenSL)
+        {
+            if (sl.spriteLibraryAsset == item.spriteLibrary)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

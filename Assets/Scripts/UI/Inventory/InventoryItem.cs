@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
@@ -30,12 +25,30 @@ public class InventoryItem : MonoBehaviour
         TMP_Text name = transform.Find("Name").GetComponent<TMP_Text>();
         name.text = item.itemName;
 
-        Button equipButton = transform.Find("EquipButton").GetComponent<Button>();
-        equipButton.onClick.AddListener(Equip);
+        GameObject equipButton = transform.Find("EquipButton").gameObject;
+        if (_player.GetComponent<PlayerInventory>().EquipedItem(item))
+        {
+            equipButton.GetComponentInChildren<TMP_Text>().text = "Unequip";
+            equipButton.GetComponent<Button>().onClick.AddListener(Unequip);
+        }
+        else
+            equipButton.GetComponent<Button>().onClick.AddListener(Equip);
     }
 
     void Equip () {
         _player.GetComponent<PlayerInventory>().EquipItem(item);
-        gameObject.GetComponentInParent<InventoryItems>().UpdatePreviewEquipment();
+        transform.Find("EquipButton").GetComponentInChildren<TMP_Text>().text = "Unequip";
+        transform.Find("EquipButton").GetComponent<Button>().onClick.AddListener(Unequip);
+    }
+
+    void Unequip () {
+        if (item.itemType == "Outfit")
+            _player.GetComponent<PlayerInventory>().EquipItem(Resources.Load<Item>("Items/BoxerOutfit"));
+        if (item.itemType == "Hair")
+            _player.GetComponent<PlayerInventory>().EquipItem(Resources.Load<Item>("Items/NoHair"));
+        if (item.itemType == "Hat")
+            _player.GetComponent<PlayerInventory>().EquipItem(Resources.Load<Item>("Items/NoHat"));
+        transform.Find("EquipButton").GetComponentInChildren<TMP_Text>().text = "Equip";
+        transform.Find("EquipButton").GetComponent<Button>().onClick.AddListener(Equip);
     }
 }
