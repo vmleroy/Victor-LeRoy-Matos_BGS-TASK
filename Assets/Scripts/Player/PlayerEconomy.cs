@@ -6,12 +6,12 @@ public class PlayerEconomy : MonoBehaviour
 {
     public int money = 500;
 
-    public void AddMoney(int amount)
+    private void AddMoney(int amount)
     {
         money += amount;
     }
 
-    public void RemoveMoney(int amount)
+    private void RemoveMoney(int amount)
     {
         money -= amount;
     }

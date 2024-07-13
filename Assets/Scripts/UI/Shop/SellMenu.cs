@@ -26,6 +26,7 @@ public class SellItems : MonoBehaviour
             Item shopItem = item.Clone();        
             shopItem.itemValue = item.itemValue / 2;           
             sellItem.GetComponent<ShopSellItem>().item = shopItem;
+            Destroy(shopItem);
             spawnObjectY -= 50;
         }
 

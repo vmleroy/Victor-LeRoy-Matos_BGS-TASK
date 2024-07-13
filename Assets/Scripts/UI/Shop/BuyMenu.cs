@@ -26,7 +26,6 @@ public class BuyItems : MonoBehaviour
         for (int i = 0; i < itemsObject.Length; i++)
         {
             Item item = itemsObject[i].GetComponent<Item>().Clone();
-            Debug.Log("item: " + item.itemName + " value: " + item.itemValue);
             if (item && (item.itemType == _itemType || _itemType == "All"))
             {
                 GameObject buyItem = Instantiate(_buyItemObject, transform.Find("Viewport").transform.Find("Content").transform);
@@ -34,6 +33,7 @@ public class BuyItems : MonoBehaviour
                 buyItem.GetComponent<ShopBuyItem>().item = item;
                 spawnObjectY -= 50;
             }
+            Destroy(item);
         }
     }
 }

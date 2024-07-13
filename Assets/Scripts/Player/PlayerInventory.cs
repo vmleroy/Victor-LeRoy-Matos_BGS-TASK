@@ -30,8 +30,15 @@ public class PlayerInventory : MonoBehaviour
     }
     public void RemoveItem(Item item)
     {
-        items.Remove(item);
-        Debug.Log("Removed " + item.itemName + " from inventory");
+        foreach(Item i in items)
+        {
+            if (i.itemName == item.itemName)
+            {
+                items.Remove(i);
+                Debug.Log("Removed " + i.itemName + " from inventory");
+                return;
+            }
+        }
     }
     void OpenInventory()
     {
