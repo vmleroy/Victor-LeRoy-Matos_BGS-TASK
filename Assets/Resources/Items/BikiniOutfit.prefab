@@ -49,4 +49,4 @@ MonoBehaviour:
   itemValue: 50
   itemType: Outfit
   itemIcon: {fileID: -1743769659, guid: 413183afdce2ded47977a47a13f1fd0b, type: 3}
-  spriteLibrary: {fileID: 7108339969198208228, guid: 07b7ee2649f7aaf4f862c84ed6dbede1, type: 3}
+  spriteLibrary: {fileID: 7108339969198208228, guid: 999fa0d351944fa40811c4d146b42100, type: 3}

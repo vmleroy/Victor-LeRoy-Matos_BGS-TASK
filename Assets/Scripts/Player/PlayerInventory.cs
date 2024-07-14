@@ -21,14 +21,6 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (!_playerInput.isDisabled && Input.GetKeyDown(_playerInput.keyBindings["Inventory"]))
-        {
-            OpenInventory();
-        }
-    }
-
     public void AddItem(Item item)
     {
         items.Add(item);
@@ -45,15 +37,6 @@ public class PlayerInventory : MonoBehaviour
                 return;
             }
         }
-    }
-    void OpenInventory()
-    {
-        Debug.Log("Inventory:");
-        foreach (Item item in items)
-        {
-            Debug.Log("item: " + item.itemName + " value: " + item.itemValue);
-        }
-        Debug.Log("Money: " + _playerEconomy.money);
     }
 
     public void EquipItem(Item item)

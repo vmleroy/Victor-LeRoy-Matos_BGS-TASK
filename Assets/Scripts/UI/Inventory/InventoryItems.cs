@@ -1,7 +1,9 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
+using UnityEngine.UI;
 
 public class InventoryItems : MonoBehaviour
 {
@@ -50,6 +52,18 @@ public class InventoryItems : MonoBehaviour
                         previewChildsSL[i].gameObject.GetComponent<SpriteRenderer>().sprite = playerChildsSL[i].gameObject.GetComponent<SpriteRenderer>().sprite;
                     }                        
                 }
+            }
+        }
+    }
+
+    public void UnequipItemsOfSameType(Item item) {
+        
+        InventoryItem[] inventoryItems = gameObject.GetComponentsInChildren<InventoryItem>();
+        foreach (InventoryItem inventoryItem in inventoryItems)
+        {
+            if (inventoryItem.item.itemType == item.itemType && inventoryItem.item.name != item.name)
+            {
+                inventoryItem.Unequip("parent");
             }
         }
     }

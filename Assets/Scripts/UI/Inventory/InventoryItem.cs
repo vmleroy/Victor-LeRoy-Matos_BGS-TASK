@@ -29,25 +29,28 @@ public class InventoryItem : MonoBehaviour
         if (_player.GetComponent<PlayerInventory>().EquipedItem(item))
         {
             equipButton.GetComponentInChildren<TMP_Text>().text = "Unequip";
-            equipButton.GetComponent<Button>().onClick.AddListener(Unequip);
+            equipButton.GetComponent<Button>().onClick.AddListener(() => Unequip("this"));
         }
         else
             equipButton.GetComponent<Button>().onClick.AddListener(Equip);
     }
 
-    void Equip () {
+    public void Equip () {
         _player.GetComponent<PlayerInventory>().EquipItem(item);
+        gameObject.GetComponentInParent<InventoryItems>().UnequipItemsOfSameType(item);
         transform.Find("EquipButton").GetComponentInChildren<TMP_Text>().text = "Unequip";
-        transform.Find("EquipButton").GetComponent<Button>().onClick.AddListener(Unequip);
+        transform.Find("EquipButton").GetComponent<Button>().onClick.AddListener(() => Unequip("this"));
     }
 
-    void Unequip () {
+    public void Unequip (string caller = "this") {
+        if (caller == "this") {
         if (item.itemType == "Outfit")
             _player.GetComponent<PlayerInventory>().EquipItem(Resources.Load<Item>("Items/BoxerOutfit"));
         if (item.itemType == "Hair")
             _player.GetComponent<PlayerInventory>().EquipItem(Resources.Load<Item>("Items/NoHair"));
         if (item.itemType == "Hat")
             _player.GetComponent<PlayerInventory>().EquipItem(Resources.Load<Item>("Items/NoHat"));
+        }
         transform.Find("EquipButton").GetComponentInChildren<TMP_Text>().text = "Equip";
         transform.Find("EquipButton").GetComponent<Button>().onClick.AddListener(Equip);
     }

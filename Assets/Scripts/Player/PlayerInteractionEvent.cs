@@ -13,7 +13,7 @@ public class PlayerInteractionEvent : MonoBehaviour
 
     // Update is called once per frame
     void Update() { 
-        if (!_playerInput.isDisabled && Input.GetKeyDown(_playerInput.keyBindings["Interact"])) isInteracting = true;
+        if (!_playerInput.isDisabled && Input.GetKeyDown(KeyCode.E)) isInteracting = true;
         else isInteracting = false;     
     }
 }

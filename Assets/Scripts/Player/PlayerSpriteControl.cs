@@ -14,17 +14,6 @@ public class PlayerSpriteControl : MonoBehaviour
         _spriteLibraries = GetComponentsInChildren<SpriteLibrary>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // WIP: CODE SIMILAR TO THIS TO BE IMPLEMENTED AT STORE
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            Debug.Log("Changing to PlayerAnimation");
-            ChangeOutfitLibrary(Resources.Load<SpriteLibraryAsset>("Player/Sprites/Outfit/BikiniOutfit"));
-        }
-    }
-
     public void ChangeOutfitLibrary (SpriteLibraryAsset index) {
         foreach (var library in _spriteLibraries)
         {
