@@ -33,6 +33,11 @@ public class CloseUI : MonoBehaviour
         if (SceneManager.GetSceneByName("PreviewPlayer").isLoaded) {
             SceneManager.UnloadSceneAsync("PreviewPlayer");
         }
+
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Clone")) {
+            Destroy(go);
+        }
+
         Destroy(_UI);
     }
 }

@@ -35,6 +35,11 @@ public class ShopBuyItem : MonoBehaviour
 
         Button buyButton = transform.Find("BuyButton").GetComponent<Button>();
         buyButton.onClick.AddListener(Buy);
+
+        if (_playerInventory.CheckIfHasItem(item))
+        {
+            BlockBuy();
+        }
     }
 
     public void Buy()
@@ -42,6 +47,15 @@ public class ShopBuyItem : MonoBehaviour
         if (_playerEconomy.Buy(item.itemValue))
         {
             _playerInventory.AddItem(item);
+            BlockBuy();
         }
+    }
+
+    void BlockBuy()
+    {
+        Button buyButton = transform.Find("BuyButton").GetComponent<Button>();
+        buyButton.interactable = false;
+        TMP_Text buyButtonText = buyButton.GetComponentInChildren<TMP_Text>();
+        buyButtonText.text = "Owned";
     }
 }

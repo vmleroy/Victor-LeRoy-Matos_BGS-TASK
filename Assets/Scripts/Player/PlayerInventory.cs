@@ -109,4 +109,16 @@ public class PlayerInventory : MonoBehaviour
         }
         return false;
     }
+
+    public bool CheckIfHasItem(Item item)
+    {
+        foreach (Item i in items)
+        {
+            if (i.itemName == item.itemName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

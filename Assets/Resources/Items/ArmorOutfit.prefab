@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdc325888829f54fbed6177439ae1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: 3
   itemName: Armor
   itemDescription: Outfit
-  itemValue: 200
+  itemValue: 100
   itemType: Outfit
   itemIcon: {fileID: -1040405083, guid: cd562d33bb491094d9fa3cfd1502d085, type: 3}
   spriteLibrary: {fileID: 7108339969198208228, guid: 74525f584ae4b304eb63151a958cee07, type: 3}

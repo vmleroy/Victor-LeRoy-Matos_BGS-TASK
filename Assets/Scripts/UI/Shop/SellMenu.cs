@@ -23,7 +23,9 @@ public class SellItems : MonoBehaviour
         {
             GameObject sellItem = Instantiate(_sellItemObject, transform.Find("Viewport").transform.Find("Content").transform);
             sellItem.transform.localScale = new Vector3(0.06f, 0.05f, 1);
-            Item shopItem = item.Clone();        
+            Item shopItem = item.Clone();  
+            shopItem.gameObject.name = "SellItemClone";
+            shopItem.tag = "Clone";  
             shopItem.itemValue = item.itemValue / 2;           
             sellItem.GetComponent<ShopSellItem>().item = shopItem;
             Destroy(shopItem);
