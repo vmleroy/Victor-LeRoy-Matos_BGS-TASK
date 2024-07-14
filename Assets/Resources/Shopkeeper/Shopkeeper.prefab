@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c9daad6533a134f8711fdc7d7bd5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shopUI: {fileID: 0}
+  _shopUI: {fileID: 5739748057720129723, guid: 596241f9348c5de4eb32095ba8dd152d, type: 3}
 --- !u!1001 &4692833611641897989
 PrefabInstance:
   m_ObjectHideFlags: 0

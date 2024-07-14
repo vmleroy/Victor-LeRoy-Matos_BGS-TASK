@@ -13,6 +13,10 @@ public class Shopkeeper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!_shopUI) {
+            Debug.LogError("Shop UI is not assigned in the inspector");
+            return;
+        }
         _questionMarkBaloon = transform.Find("QuestionMarkBaloon").gameObject;
     }
 
